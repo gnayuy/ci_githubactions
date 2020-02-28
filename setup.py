@@ -6,7 +6,7 @@ setup(
     packages=find_packages(exclude=['tests*']),
     license='MIT',
     description='An example of CI with GitHub Actions',
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
     install_requires=['numpy'],
     url='https://github.com/gnayuy/ci_githubactions',
     author='gnayuy',
