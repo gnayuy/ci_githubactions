@@ -18,9 +18,17 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
+        python3 -m venv venv
+        . venv/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install -r test_requirements.txt
+        pip install .
+        
+    - save_cache:
+        paths:
+          - ./venv
+        key: v1-dependencies-{{ checksum "requirements.txt" }}-{{ checksum "test_requirements.txt"}}
     - name: Test with pytest
       run: |
-        pip install -r test_requirements.txt
         pytest tests/test.py
